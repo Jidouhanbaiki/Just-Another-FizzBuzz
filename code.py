@@ -93,6 +93,66 @@ def fbrange(n):
 
 print list(fbrange(101))
 
-# take 6
+# take 5.a
+
+rules = ((3, "Fizz"), (5, "Buzz"))
+
+def fbrange(n, rules):
+	i = [1, 1, 1]
+	while i[0] < n:
+		delta = ""
+		for j in range(len(rules)):	
+			i[j+1] = 0 if i[j+1] == rules[j][0] else i[j+1]
+			delta += "" if i[j+1] else rules[j][1]
+			
+		yield delta or i[0]
+		i = map(lambda x: x+1, i)
+
+print list(fbrange(101, rules))
+
+# take 6 inspired by https://gist.github.com/jshurst/b6591c0140e8aad8e55e
+
+rules = ((lambda x: x % 3, 0 ,"Kamen"), (lambda x: x % 5, 0 ,"Rider"))
+
+arr = []
+for i in range(1,101):
+    next_var = ""
+    for action, condition, result in rules:	
+        next_var += result if action(i) == condition else ""
+    next_var = next_var or i
+    arr.append(next_var)
+
+print arr
 
 
+# take 6.a
+
+rules = ((lambda x: x % 3, 0 ,"Fizz"), (lambda x: x % 5, 0 ,"Buzz"))
+
+def execute(user_input, action, condition, output):
+	return output if action(user_input) == condition else ""
+
+arr = []
+for i in range(1,101):
+    next_var = ""
+    for rule in rules:	
+        next_var += execute(i, *rule)
+    next_var = next_var or i
+    arr.append(next_var)
+
+print arr
+
+
+# take 7 functional fizzbuzz without "if"
+
+arr = []
+for i in range(1,101):
+	rules = {
+		(False, False): i, 
+		(True, False): "Fizz",
+		(False, True): "Buzz",
+		(True, True): "FizzBuzz",
+	}
+	arr.append(rules[(not i % 3, not i % 5)]) 
+
+print arr
