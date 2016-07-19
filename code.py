@@ -30,3 +30,17 @@ for r_num, r_str in rules:
 
 arr = [x_str if x_str else x_num for x_num, x_str in arr]
 print arr
+
+
+# take 3 - that's perfect
+
+rules = ((3, "Fizz"), (5, "Buzz"))
+
+arr = []
+for i in range(1,101):
+	arr.append("")
+	for r_num, r_str in rules:
+		arr[-1] += "" if i % r_num else r_str
+	arr[-1] = arr[-1] or i
+
+print arr
