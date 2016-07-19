@@ -86,9 +86,13 @@ def fbrange(n):
 	while i[0] < n:
 		delta = "" if i[1] else "Fizz"
 		delta += "" if i[2] else "Buzz"
-		yield () delta or i[0]
+		yield delta or i[0]
 		i = map(lambda x: x+1, i)
 		i[1] = 0 if i[1] == 3 else i[1]
 		i[2] = 0 if i[2] == 5 else i[2]
 
 print list(fbrange(101))
+
+# take 6
+
+
