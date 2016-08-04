@@ -156,3 +156,21 @@ for i in range(1,101):
 	arr.append(rules[(not i % 3, not i % 5)]) 
 
 print arr
+
+# take 8 itertools.cycle
+
+from itertools import cycle
+
+f = cycle(["", "", "Fizz"])
+b = cycle(["", "", "", "", "Buzz"])
+
+arr = []
+for i in range(1,101):
+	arr.append("")
+	arr[-1] += f.next()
+	arr[-1] += b.next()
+	arr[-1] = arr[-1] or i
+
+print arr
+
+
