@@ -174,3 +174,23 @@ for i in range(1,101):
 print arr
 
 
+# take 9 itertools.count
+
+from itertools import count
+
+def fb(x):
+    return_val = ""
+    f = 3
+    b = 5
+    if not x % f: 
+        return_val += "Fizz"
+    if not x % b:
+        return_val += "Buzz"
+    return return_val or str(x)
+
+n = count(1)
+arr = []
+while len(arr) < 100:
+	arr.append(fb(n.next()))
+
+print arr
